@@ -1,7 +1,7 @@
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 #include <cctype>
-#include <math.h>
+#include <cmath>
 #include "libforlab.h"
 
 using namespace std;
@@ -14,7 +14,15 @@ int main() {
 	cout << "Enter the maximum degree of the polynomial." << endl;
     cin >> maxDegree;
     prov();
+    if (maxDegree < 0) {
+        cout << "Error!Negative degree of the derivative!";
+        return 1;
+    }
     int* arrCoef = new int[maxDegree];
+    if (arrCoef == nullptr) {
+        cout << "Error!" << endl;
+        return -1;
+    }
     
     for (i = 0; i < maxDegree; i++) {
         cout << "Enter the coefficient at x" << endl;
