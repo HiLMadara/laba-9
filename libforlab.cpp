@@ -1,7 +1,7 @@
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 #include <cctype>
-#include <math.h>
+#include <cmath>
 
 using namespace std;
 void prov() {
@@ -13,10 +13,10 @@ void prov() {
     }
 }
 
-void proizv(int* first, int* last, const int i) {
-    if ((i > last - first) || (i == 0)) {
+void proizv(double* first, double* last, const int j) {
+    if ((j > last - first) || (j == 0)) {
         return ;
     }
-    first[i - 1] = first[i] * i;
-    first[i] = 0;
+    first[j - 1] = first[j] * j;
+    first[j] = 0;
 }

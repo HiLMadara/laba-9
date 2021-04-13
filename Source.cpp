@@ -10,24 +10,29 @@ int main() {
 	                                                          
     int maxDegree, sequence;                                                            //int n, n/2
        
-    int i,coef;    
+    int i;
+    double coef;
 	cout << "Enter the maximum degree of the polynomial." << endl;
     cin >> maxDegree;
-    prov();
+    check();
     if (maxDegree < 0) {
         cout << "Error!Negative degree of the derivative!";
         return 1;
     }
-    int* arrCoef = new int[maxDegree];
-    if (arrCoef == nullptr) {
-        cout << "Error!" << endl;
+    if (maxDegree > 1000) {
+        cout << "Error! Too big degree man relax dont break my lab! ";
+        return -1;
+    }
+    double* arrCoef = new(nothrow) double[maxDegree];
+    if (!arrCoef) {
+        cout << "Memory error!";
         return -1;
     }
     
     for (i = 0; i < maxDegree; i++) {
-        cout << "Enter the coefficient at x" << endl;
+       //cout << "Enter the coefficient at x" << endl;
         cin >> coef;
-        prov();
+        check();
         arrCoef[i] = coef;
     }
     
@@ -35,8 +40,8 @@ int main() {
     
     for (i = 0 ; i < sequence; i++) {                                                   
         
-        for (i = 1; i < maxDegree; i++) {
-            proizv(arrCoef, arrCoef + maxDegree, i);                                                            
+        for (int j = 1; j < maxDegree; j++) {
+            deriv(arrCoef, arrCoef + maxDegree, j);                                                            
         }
 
    }
@@ -44,6 +49,7 @@ int main() {
     for (i = 0; i < maxDegree; i++) {
         cout << "Coefficient at the degree of "<< i << " = " << arrCoef[i] << endl;
     }
+    
     
     delete [] arrCoef;
     return 0;
